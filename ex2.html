@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<simple-comp>
+			
+		</simple-comp>
+	</div>
+	<template id="temp">
+		<div class="comp_root">
+			<p>this is component</p>
+			<p>{{message}}</p>
+			<p>{{message_1}}</p>
+		</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component("simpleComp",{
+			template:"#temp",
+			data:function() {
+				return {
+					message: "component 's own data",
+					message_1:"Another component 's own data"
+				}
+			},
+			props:[],
+			methods:{}
+		})
+		var vm = new Vue({
+			el:"#app",
+			data:{},
+			computed:{},
+			methods:{},
+			})
+	</script>
+</body>
+</html>
