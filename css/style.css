@@ -1,0 +1,15 @@
+h1,div,p,span{
+	font-size:18px;font-family:helvetica
+}
+ body{
+ 	padding:33px;
+ }
+ span{
+ 	line-height:20px;
+ }
+ input{
+ 	line-height:20px;font-size:18px;width:96px;
+ }
+ .warning{
+ 	border:red solid 2px
+ }
