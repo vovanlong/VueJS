@@ -13,3 +13,12 @@ h1,div,p,span{
  .warning{
  	border:red solid 2px
  }
+ .comp_root{
+ 	background: red;
+ 	color: white;
+ }
+ #app{
+ 	background: orange;
+ 	padding: 25px;
+ 	color: blue
+ }

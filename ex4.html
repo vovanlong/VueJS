@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>VM instance</p>
+		<comp v-bind:prop="vue_data"></comp>
+	</div>
+	<template id="temp">
+		<div class="comp_root">
+			<p>this is component</p>
+			<hr/>
+			<p>{{message}}</p>
+			<hr/>
+			<p>{{prop}}</p>
+		</div>
+	</template>
+	<script type="text/javascript">
+		var vm = Vue.component("comp",{
+			template:"#temp",
+			data:function() {
+				return{
+					message: "component 's data and "+this.prop,
+				}
+			},
+			props:["prop"],
+			methods:{},
+		})
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				vue_data:"Vue's data",
+			},
+			computed:{},
+			methods:{},
+			})
+	</script>
+</body>
+</html>
