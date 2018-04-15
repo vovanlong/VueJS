@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="app">
-		<textarea v-model="message"></textarea>
+		<textarea v-bind:class="{warning:!remain}" v-model="message" v-on:input="check"></textarea>
 		<p>{{remain}}/{{limit}}</p>
 	</div>
 	<script type="text/javascript">
@@ -24,7 +24,13 @@
 					return this.limit - this.message.length
 				}
 			},
-			methods:{},
+			methods:{
+				check:function() {
+					if (this.remain<0) {
+						this.message = this.message.substr(0,this.limit)
+					}
+				}
+			},
 		})
 	</script>
 </body>
