@@ -17,3 +17,8 @@ h1,div,p,span{
  	background: red;
  	color: white;
  }
+ #app{
+ 	background: orange;
+ 	padding: 25px;
+ 	color: blue
+ }
