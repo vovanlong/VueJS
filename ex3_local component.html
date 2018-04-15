@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app1">
+		<p>VM 1</p>
+		<comp></comp>
+	</div>
+	<hr/>
+	<div id="app2">
+		<p>VM 2</p>
+		<comp></comp>
+	</div>
+	<template id="temp">
+		<div class="comp_root">
+			<p>this is component</p>
+			<p>rhymastic</p>
+		</div>
+	</template>
+	<script type="text/javascript">
+		var vm1 = new Vue({
+			el:"#app1",
+			components:{
+				comp:{
+					template:"#temp",
+					data:function() {
+						return {}
+					},
+					props:[],
+					methods:{},
+				}
+			}
+		})
+		var vm2 = new Vue({
+			el:"#app2",
+		})
+		
+	</script>
+</body>
+</html>
