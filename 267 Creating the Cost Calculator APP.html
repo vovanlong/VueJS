@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+ 		h1,h2,h3,h4,h5,h6,div,p,span{font-family:helvetica;padding:0;margin:0;list-stle:none}
+	 </style>
+ <script type='text/javascript' src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<item label="Price" v-model="price" ></item>
+		<item label="Shipping" v-model="shipping" ></item>
+		<item label="Discount" v-model="discount" ></item>
+		<item label="Wrapping Fee" v-model="wapping" ></item>
+		<hr/>
+		<p><span>Total Cost: </span>{{total}}</p>
+	</div>
+	<template id="temp">
+		<div>
+			<label>{{label}}</label>
+			<br/>
+			<input v-bind:value="value" v-on:input="send($event.target.value)">
+		</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component("item",{
+			template:"#temp",
+			data:function() {
+				return{}
+			},
+			props:["label","value"],
+			methods:{
+				send:function(v){
+					this.$emit("input",v)
+				}
+			},
+		})
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				price:0,
+				shipping:0,
+				discount:0,
+				wapping:0,
+			},
+			computed:{
+				total:function() {
+					this.price = Number(this.price)
+					this.shipping = Number(this.shipping)
+					this.discount = Number(this.discount)
+					this.wapping = Number(this.wapping)
+					return this.price + this.shipping + this.wapping - this.discount
+				}
+			},
+		})
+	</script>
+</body>
+</html>
