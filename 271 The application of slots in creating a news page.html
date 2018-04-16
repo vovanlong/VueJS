@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<style>
+    h1.h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    li,
+    ul,
+    ol,
+    input {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        margin-top: 5px;
+    }
+
+    .line {
+        border-top: 1px gray solid;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .content {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .header {
+        font-size: 36px;
+        font-weight: heavy;
+        font-family: helvetica;
+    }
+
+    .footer {
+        font-size: 12px;
+        font-style: italic;
+        font-family: helvetica;
+        color: gray;
+        text-align: right;
+    }
+
+    .category {
+        font-size: 16px;
+        text-align: right;
+        color: blue;
+        font-family: helvetica;
+        background: yellow
+    }
+</style>
+</head>
+<body>
+	<div id="app">
+		<comp>
+			<h1 class="header" slot="title" ><i>The title of the article</i></h1>
+			<div class="content">
+				<p>In 2017, OnlyKiosk developed a new course teaching Vue.js.</p>
+	            <p>This is the second paragraph.</p>
+	  			<p>I really don't know what to write in the third paragraph. I really don't know what to write in the third paragraph. I really don't know what to write in the third paragraph. I really don't know what to write in the third paragraph. I really don't know what to write in the third paragraph. I really don't know what to write in the third paragraph.</p>
+	 			<p>For certain, I want to add a fourth paragraph.</p>
+	 			<p>The fifth paragraph seems unnecessary. But I added it anyway.</p>
+			</div>
+			<p class="footer" slot="author-info">Create by OnlyKiosk in 2018. All rights reserved</p>
+			<p class="Category" slot="category" >News</p>
+		</comp>
+	</div>
+	<template id="temp">
+		<div class="style">
+			<slot name="title"></slot>
+			<div class="line"></div>
+			<slot></slot>
+			<div class="line"></div>
+			<slot name="author-info"></slot>
+			<p class="category">News</p>
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	Vue.component("comp",{
+		template:"#temp",
+	})
+	var vm = new Vue({
+		el:"#app",
+	})
+</script>
+</html>
