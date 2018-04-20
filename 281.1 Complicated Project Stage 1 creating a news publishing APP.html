@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+ 		h1.h2,h3,h4,h5,h6,p,span,li,ul,ol,input{margin:0;padding:0;word-break:break-all;list-style:none;}
+ 		.button-size{font-size:36px;}
+ 		h1{text-align:center;}
+ 		#line{height:1px;}
+ 		#category{color:white;text-align:right;padding-right:5px;background:yellow;font-size:16px;line-height:22px;font-family:helvetica;font-weight:bold;}
+ 		#article-area{padding-top:6px;padding-bottom:6px;}
+ 		#article-info{text-align:right;font-size:12px;font-style:italic;font-family:helvetica;color:gray;line-height:18px;}
+ 		.warning{border:1px solid red;color:red;}
+ </style>
+ <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<i v-if="show" v-on:click="show=!show" title="Edit" class="button-size fa fa-car"></i>
+		<i v-if="!show" title="Save" class="button-size fa fa-heartbeat" ></i>
+		<div v-if="!show" id="reading-mode">
+			<reading-comp :title="title" :author="author" :date="date" :category="category" >
+				{{article}}
+			</reading-comp>
+		</div>
+
+		<div v-if="show" id="editting-mode">Editing mode</div>
+	</div>
+	<template id="reading-temp">
+		<div>
+			<h1>{{title}}</h1>
+			<div id="line"></div>
+			<slot></slot>
+			<div id="line"></div>
+			<p>Created by <span>{{author}}</span> and last edited at <span>{{date}}</span></p>
+			<div id="category">
+				<span>{{category}}</span>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component("reading-comp",{
+			template: "#reading-temp",
+			props:["title","author","date","category"],
+			data: function() {
+				return{}
+			}
+		})
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				show:true,
+				title:"A courese on Vue.js 2.0+",
+				article:"OnlyKiosk developed a Vue course.OnlyKiosk developed a Vue course.",
+				author:"OnlyKiosk",
+				date:"2017",
+				category:"Tech",
+			},
+			computed:{},
+			methods:{},
+		})
+	</script>
+</body>
+</html>
