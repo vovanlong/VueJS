@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function ymdhms() {
+			var date = new Date()
+			var year = String(date.getFullYear())
+			var year_two_digit = "'" + year.substr(2,2)
+
+			var month = date.getMonth()+1
+			switch(month){
+				case 1:
+				var month_str ="Jan"
+				case 4:
+				var month_str= "Dec"
+				break;
+			}
+			var day = date.getDate()
+			if(day<=9){
+				day = "0" + day
+			}
+			var hour = date.getHours()
+		 	var min = date.getMinutes()
+		 	var sec = date.getSeconds()
+		 	var mdy = month_str+" "+day+" "+year_two_digit
+		 	var hms = hour+":"+min+":"+sec
+		 	var ymdhms = mdy+" "+hms
+		 return ymdhms
+		}
+		 alert(ymdhms())
+	</script>
+</body>
+</html>
