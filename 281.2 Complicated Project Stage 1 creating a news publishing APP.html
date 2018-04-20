@@ -20,14 +20,26 @@
 <body>
 	<div id="app">
 		<i v-if="show" v-on:click="show=!show" title="Edit" class="button-size fa fa-car"></i>
-		<i v-if="!show" title="Save" class="button-size fa fa-heartbeat" ></i>
-		<div v-if="!show" id="reading-mode">
+		<i v-if="!show" v-on:click="show=!show" title="Save" class="button-size fa fa-heartbeat" ></i>
+		<div v-if="show" id="reading-mode">
 			<reading-comp :title="title" :author="author" :date="date" :category="category">
 				{{article}}
 			</reading-comp>
 		</div>
 
-		<div v-if="show" id="editting-mode">Editing mode</div>
+		<div v-if="!show" id="editting-mode">
+			<div><label>Article title: </label><input v-model="title" /></div>
+			<div><label>Author Name: </label><input v-model="author" /></div>
+			<ul>
+				<li v-for="element in category_list">
+					<label>{{element}}</label>
+					<input type="radio" v-bind:value="element" v-model="category">
+				</li>
+			</ul>
+			<div><label>Category: </label><input v-model="category" /></div>
+			<div><label>Article: </label><textarea v-model="article"></textarea></div>
+		</div>
+	
 	</div>
 	<template id="reading-temp">
 		<div>
@@ -58,6 +70,7 @@
 				author:"OnlyKiosk",
 				date:"2017",
 				category:"Tech",
+				category_list:["Web","Tech","News","Science","Sports"],
 			},
 			computed:{},
 			methods:{},
